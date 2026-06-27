@@ -1,1 +1,0 @@
-# HackArena-2.0
