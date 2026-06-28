@@ -1,8 +1,8 @@
-from pydantic import BaseModel
+from fastapi import APIRouter
+from app.agents.invoice_agent import run_invoice_agent
 
-class Invoice(BaseModel):
-    invoice_id: str
-    employee_id: str | None = None
-    amount: float = 0
-    currency: str = "AED"
-    status: str = "draft"
+router = APIRouter()
+
+@router.post("/invoice")
+def invoice(payload: dict):
+    return run_invoice_agent(payload)
